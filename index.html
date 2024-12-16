@@ -1,0 +1,153 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trigonometric Calculator</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Calculator Styling */
+        .calculator {
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        /* Input Field */
+        input[type="number"] {
+            padding: 15px;
+            font-size: 16px;
+            width: 80%;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            border-color: #4CAF50;
+        }
+
+        /* Button Styling */
+        button {
+            padding: 15px;
+            font-size: 18px;
+            width: 80%;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            color: #333;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4CAF50;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        /* Results Section */
+        .result {
+            margin-top: 20px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .result p {
+            margin: 10px 0;
+        }
+
+        .result p span {
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .calculator {
+                width: 100%;
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            input[type="number"], button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <h2>Trigonometric Calculator</h2>
+        <label for="angle" style="color: white;">Enter angle (in degrees):</label>
+        <input type="number" id="angle" placeholder="Angle in degrees" />
+        <br>
+        <button onclick="calculate()">Calculate</button>
+        <div class="result" id="result">
+            <p id="sinResult"></p>
+            <p id="cosResult"></p>
+            <p id="tanResult"></p>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            // Get the input angle in degrees
+            var angleInDegrees = parseFloat(document.getElementById("angle").value);
+            
+            // Convert degrees to radians
+            var angleInRadians = angleInDegrees * (Math.PI / 180);
+            
+            // Calculate sine, cosine, and tangent
+            var sinValue = Math.sin(angleInRadians);
+            var cosValue = Math.cos(angleInRadians);
+            var tanValue = Math.tan(angleInRadians);
+            
+            // Display the results
+            document.getElementById("sinResult").innerHTML = "<span>Sine:</span> " + sinValue.toFixed(4);
+            document.getElementById("cosResult").innerHTML = "<span>Cosine:</span> " + cosValue.toFixed(4);
+            document.getElementById("tanResult").innerHTML = "<span>Tangent:</span> " + (tanValue.toFixed(4) || "undefined");
+        }
+    </script>
+
+</body>
+</html>
